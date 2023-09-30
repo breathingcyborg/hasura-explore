@@ -1,0 +1,58 @@
+table:
+  name: published_article
+  schema: public
+object_relationships:
+  - name: author
+    using:
+      manual_configuration:
+        column_mapping:
+          author_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+select_permissions:
+  - role: editor
+    permission:
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: guest
+    permission:
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+      filter: {}
+    comment: ""
+  - role: writer
+    permission:
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+    comment: ""

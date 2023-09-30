@@ -1,0 +1,5 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- INSERT INTO public.user_role (value, comment) VALUES
+--     ('editor', 'Editor'),
+--     ('writer', 'Writer');

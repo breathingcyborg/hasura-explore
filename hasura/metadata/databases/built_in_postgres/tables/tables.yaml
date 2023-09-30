@@ -1,0 +1,6 @@
+- "!include public_article.yaml"
+- "!include public_article_status.yaml"
+- "!include public_my_profile.yaml"
+- "!include public_published_article.yaml"
+- "!include public_user.yaml"
+- "!include public_user_role.yaml"

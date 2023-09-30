@@ -1,0 +1,30 @@
+actions:
+  - name: login
+    definition:
+      kind: synchronous
+      handler: '{{ACTION_BASE_URL}}/login'
+      headers:
+        - name: X-HASURA-WEBHOOK-SECRET
+          value_from_env: HASURA_WEBHOOK_SECRET
+    permissions:
+      - role: editor
+      - role: writer
+      - role: guest
+    comment: login
+  - name: signup
+    definition:
+      kind: synchronous
+      handler: '{{ACTION_BASE_URL}}/signup'
+      headers:
+        - name: X-HASURA-WEBHOOK-SECRET
+          value_from_env: HASURA_WEBHOOK_SECRET
+    comment: signup to be used from console
+custom_types:
+  enums: []
+  input_objects:
+    - name: SignupInput
+    - name: LoginInput
+  objects:
+    - name: SignupOutput
+    - name: LoginOutput
+  scalars: []
