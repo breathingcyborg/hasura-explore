@@ -1,0 +1,30 @@
+table:
+  name: my_profile
+  schema: public
+select_permissions:
+  - role: editor
+    permission:
+      columns:
+        - id
+        - email
+        - name
+        - role
+        - created_at
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      limit: 1
+    comment: ""
+  - role: writer
+    permission:
+      columns:
+        - id
+        - email
+        - name
+        - role
+        - created_at
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      limit: 1
+    comment: ""

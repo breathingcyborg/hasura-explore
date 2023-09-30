@@ -1,0 +1,113 @@
+table:
+  name: article
+  schema: public
+object_relationships:
+  - name: author
+    using:
+      foreign_key_constraint_on: author_id
+insert_permissions:
+  - role: editor
+    permission:
+      check: {}
+      set:
+        author_id: x-hasura-User-Id
+        status: draft
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+    comment: ""
+  - role: writer
+    permission:
+      check:
+        _and:
+          - author_id:
+              _eq: X-Hasura-User-Id
+          - status:
+              _eq: draft
+      set:
+        author_id: x-hasura-User-Id
+        status: draft
+      columns:
+        - author_id
+        - content
+        - created_at
+        - id
+        - published_at
+        - slug
+        - status
+        - title
+        - updated_at
+    comment: ""
+select_permissions:
+  - role: editor
+    permission:
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: writer
+    permission:
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+update_permissions:
+  - role: editor
+    permission:
+      columns:
+        - author_id
+        - id
+        - content
+        - slug
+        - status
+        - title
+        - created_at
+        - published_at
+        - updated_at
+      filter: {}
+      check: {}
+    comment: ""
+  - role: writer
+    permission:
+      columns:
+        - content
+        - created_at
+        - id
+        - slug
+        - title
+        - updated_at
+      filter:
+        author_id:
+          _eq: X-Hasura-User-Id
+      check: {}
+    comment: ""
+delete_permissions:
+  - role: editor
+    permission:
+      filter: {}
+    comment: ""

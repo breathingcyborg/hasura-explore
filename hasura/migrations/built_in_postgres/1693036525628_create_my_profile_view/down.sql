@@ -1,0 +1,4 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- CREATE view public.my_profile AS
+-- SELECT id, name, email, role, created_at FROM public.user;

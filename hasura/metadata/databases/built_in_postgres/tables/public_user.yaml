@@ -1,0 +1,39 @@
+table:
+  name: user
+  schema: public
+array_relationships:
+  - name: articles
+    using:
+      foreign_key_constraint_on:
+        column: author_id
+        table:
+          name: article
+          schema: public
+select_permissions:
+  - role: editor
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - role
+        - updated_at
+      filter: {}
+    comment: ""
+  - role: guest
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
+    comment: ""
+  - role: writer
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - role
+        - updated_at
+      filter: {}
+    comment: ""
